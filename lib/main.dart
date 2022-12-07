@@ -112,15 +112,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       Image.asset(
                         "assets/logo.png",
-                        height: 250,
-                        width: 250,
+                        height: 300,
+                        width: MediaQuery.of(context).size.width*0.8,
                       ),
                       const CupertinoActivityIndicator(
-                        color: Colors.greenAccent,
+                        color: Colors.green,
                         radius: 25,
                       ),
-                     const SizedBox(height: 20),
-                      Text('${_progress*100} %',style:const TextStyle(color: Colors.greenAccent, fontSize: 16),)
+                      const SizedBox(height: 20),
+                      Text('${_progress*100} %',style:const TextStyle(color: Colors.green, fontSize: 16),)
                     ],
                   ),
                 ),
