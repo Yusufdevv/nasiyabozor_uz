@@ -89,11 +89,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         onWebViewCreated: (controller) {
                           _contoller = controller;
                         },
-                        onPageFinished: (url) {
-                          setState(() {
-                            isPageFinished = true;
-                          });
-                        },
                         onProgress: (progress) {
                           setState(() => _progress = progress / 100);
                         }),
@@ -101,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-            if (!isPageFinished)
+            if (_progress<0.99)
               Container(
                 height: double.maxFinite,
                 width: double.maxFinite,
@@ -113,14 +108,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       Image.asset(
                         "assets/logo.png",
                         height: 300,
-                        width: MediaQuery.of(context).size.width*0.8,
+                        width: MediaQuery.of(context).size.width*0.9,
                       ),
                       const CupertinoActivityIndicator(
                         color: Colors.green,
                         radius: 25,
                       ),
-                      const SizedBox(height: 20),
-                      Text('${_progress*100} %',style:const TextStyle(color: Colors.green, fontSize: 16),)
+                      Text('${(_progress*100).toStringAsFixed(0)} %',style:const TextStyle(color: Colors.green, fontSize: 16),)
                     ],
                   ),
                 ),
